@@ -1,26 +1,10 @@
 on:
   schedule:
     - cron: '45 9,16 * * 1-5'
-  push:
-    branches:
-      - feature/embold
 
 jobs:
   check_code_quality:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Pull from Epitech origin
-        env: 
-          CI_COMMIT_MESSAGE: Update codebase from Epitech origin
-          CI_COMMIT_AUTHOR: JonathanBot
-          CI_REMOTE_GIT: "git@github.com:EpitechMscProPromo2024/T-WEB-800-LYO_1.git"
-        run: |
-          git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
-          git config --global user.email "jonathan@bot.eu"
-          git remote add epitech "${{ env.CI_REMOTE_GIT }}" 
-          git pull epitech main
-          git push origin master
-
       - name: Embold Github Actions
         uses: embold/github-action-docker@v0.2
