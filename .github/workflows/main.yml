@@ -14,11 +14,13 @@ jobs:
         env: 
           CI_COMMIT_MESSAGE: Update codebase from Epitech origin
           CI_COMMIT_AUTHOR: JonathanBot
+          CI_REMOTE_GIT: "git@github.com:EpitechMscProPromo2024/T-WEB-800-LYO_1.git"
         run: |
           git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
           git config --global user.email "jonathan@bot.eu"
+          git remote add epitech "${{ env.CI_REMOTE_GIT }}" 
           git pull epitech main
-          git push oringin master
+          git push origin master
 
       - name: Embold Github Actions
         uses: embold/github-action-docker@v0.2
