@@ -1,13 +1,20 @@
 on:
   schedule:
     - cron: '45 9,16 * * 1-5'
-  pull_request:
-    branches:
-      - master
 
 jobs:
   check_code_quality:
     runs-on: ubuntu-latest
     steps:
+      - name: Pull from Epitech origin
+        env: 
+          CI_COMMIT_MESSAGE: Update codebase from Epitech origin
+          CI_COMMIT_AUTHOR: JonathanBot
+        run: |
+          git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
+          git config --global user.email "jonathan@bot.eu"
+          git pull epitech main
+          git push oringin master
+
       - name: Embold Github Actions
         uses: embold/github-action-docker@v0.2
