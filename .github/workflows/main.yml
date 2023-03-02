@@ -1,0 +1,10 @@
+on:
+  schedule:
+    - cron: '45 9,10,14,15,16 * * 1-5'
+
+jobs:
+  check_code_quality:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Embold Github Actions
+        uses: embold/github-action-docker@v0.2
